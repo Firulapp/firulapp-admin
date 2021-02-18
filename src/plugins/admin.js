@@ -38,7 +38,7 @@ export default new VuetifyAdmin({
   router,
   store,
   i18n,
-  title: "Vuetify Admin",
+  title: "Firulapp Admin",
   routes,
   locales: {
     en

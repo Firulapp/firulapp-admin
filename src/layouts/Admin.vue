@@ -44,8 +44,7 @@ export default {
       mini: false,
       headerMenu: [
         {
-          link: "/",
-          text: this.$t("menu.dashboard")
+          link: "/"
         }
       ],
       footerMenu: [
