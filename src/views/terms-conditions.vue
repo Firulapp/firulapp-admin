@@ -1,12 +1,14 @@
 <template>
-  <div>{{ title }}</div>
+  <div>
+    {{ title }}
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      title: "Opciones"
+      title: "Reglas de Conducta"
     };
   }
 };

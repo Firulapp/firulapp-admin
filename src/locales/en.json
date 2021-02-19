@@ -11,6 +11,7 @@
     "register": "Register",
     "profile": "Profile",
     "dashboard": "Dashboard",
+    "terms_conditions": "TermsConditions",
     "not_found": "Not found"
   },
   "auth": {
@@ -41,7 +42,9 @@
     "login": "Login",
     "profile": "Profile",
     "dashboard": "Dashboard",
-    "param_globales": "Parámetros Globales"
+    "param_globales": "Parámetros Globales",
+    "terms_conditions": "Terms & Conditions"
+      
   },
   "resources": {
     "servicios": {
@@ -51,14 +54,6 @@
         "name": "Nombre",
         "description" : "Descripción",
         "state" : "Estado"
-      }
-    },
-    "reglasConducta": {
-      "name": "Reglas de Conducta",
-      "fields": {
-        "id": "Código",
-        "name": "Título",
-        "description" : "Descripción"
       }
     }
   }
