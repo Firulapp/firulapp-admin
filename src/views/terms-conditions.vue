@@ -1,124 +1,135 @@
 <template>
   <v-card class="editor" height="100%">
-    <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
-      <div class="menubar">
+    <div class="menu__header">
+      <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
+        <div class="menubar">
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.bold() }"
+            @click="commands.bold"
+          >
+            <v-icon>mdi-format-bold</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.italic() }"
+            @click="commands.italic"
+          >
+            <v-icon>mdi-format-italic</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.strike() }"
+            @click="commands.strike"
+          >
+            <v-icon>mdi-format-strikethrough</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.underline() }"
+            @click="commands.underline"
+          >
+            <v-icon>mdi-format-underline</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.paragraph() }"
+            @click="commands.paragraph"
+          >
+            <v-icon>mdi-format-paragraph</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.heading({ level: 1 }) }"
+            @click="commands.heading({ level: 1 })"
+          >
+            <v-icon>mdi-format-header-1</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.heading({ level: 2 }) }"
+            @click="commands.heading({ level: 2 })"
+          >
+            <v-icon>mdi-format-header-2</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.heading({ level: 3 }) }"
+            @click="commands.heading({ level: 3 })"
+          >
+            <v-icon>mdi-format-header-3</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.bullet_list() }"
+            @click="commands.bullet_list"
+          >
+            <v-icon>mdi-format-list-bulleted</v-icon>
+          </button>
+          <button
+            class="menubar__button"
+            :class="{ 'is-active': isActive.ordered_list() }"
+            @click="commands.ordered_list"
+          >
+            <v-icon>mdi-format-list-bulleted</v-icon>
+          </button>
+          <button class="menubar__button" @click="commands.horizontal_rule">
+            <v-icon>mdi-minus</v-icon>
+          </button>
+          <button class="menubar__button" @click="commands.undo">
+            <v-icon>mdi-undo</v-icon>
+          </button>
+          <button class="menubar__button" @click="commands.redo">
+            <v-icon>mdi-redo</v-icon>
+          </button>
+        </div>
+      </editor-menu-bar>
+      <div class="search">
+        <input
+          ref="search"
+          class="seach__input"
+          @keydown.enter.prevent="editor.commands.find(searchTerm)"
+          placeholder="Search …"
+          type="text"
+          v-model="searchTerm"
+        />
+        <input
+          class="seach__input"
+          @keydown.enter.prevent="editor.commands.replace(replaceWith)"
+          placeholder="Replace …"
+          type="text"
+          v-model="replaceWith"
+        />
         <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.bold() }"
-          @click="commands.bold"
+          class="search__button"
+          @click="editor.commands.find(searchTerm)"
         >
-          <v-icon>mdi-format-bold</v-icon>
+          Find
+        </button>
+        <button class="search__button" @click="editor.commands.clearSearch()">
+          Clear
         </button>
         <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.italic() }"
-          @click="commands.italic"
+          class="search__button"
+          @click="editor.commands.replace(replaceWith)"
         >
-          <v-icon>mdi-format-italic</v-icon>
+          Replace
         </button>
         <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.strike() }"
-          @click="commands.strike"
+          class="search__button"
+          @click="editor.commands.replaceAll(replaceWith)"
         >
-          <v-icon>mdi-format-strikethrough</v-icon>
-        </button>
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.underline() }"
-          @click="commands.underline"
-        >
-          <v-icon>mdi-format-underline</v-icon>
-        </button>
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.paragraph() }"
-          @click="commands.paragraph"
-        >
-          <v-icon>mdi-format-paragraph</v-icon>
-        </button>
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 1 }) }"
-          @click="commands.heading({ level: 1 })"
-        >
-          <v-icon>mdi-format-header-1</v-icon>
-        </button>
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-          @click="commands.heading({ level: 2 })"
-        >
-          <v-icon>mdi-format-header-2</v-icon>
-        </button>
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-          @click="commands.heading({ level: 3 })"
-        >
-          <v-icon>mdi-format-header-3</v-icon>
-        </button>
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.bullet_list() }"
-          @click="commands.bullet_list"
-        >
-          <v-icon>mdi-format-list-bulleted</v-icon>
-        </button>
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.ordered_list() }"
-          @click="commands.ordered_list"
-        >
-          <v-icon>mdi-format-list-bulleted</v-icon>
-        </button>
-        <button class="menubar__button" @click="commands.horizontal_rule">
-          <v-icon>mdi-minus</v-icon>
-        </button>
-        <button class="menubar__button" @click="commands.undo">
-          <v-icon>mdi-undo</v-icon>
-        </button>
-        <button class="menubar__button" @click="commands.redo">
-          <v-icon>mdi-redo</v-icon>
+          Replace All
         </button>
       </div>
-    </editor-menu-bar>
-    <div class="search">
-      <input
-        ref="search"
-        class="seach__input"
-        @keydown.enter.prevent="editor.commands.find(searchTerm)"
-        placeholder="Search …"
-        type="text"
-        v-model="searchTerm"
-      />
-      <input
-        class="seach__input"
-        @keydown.enter.prevent="editor.commands.replace(replaceWith)"
-        placeholder="Replace …"
-        type="text"
-        v-model="replaceWith"
-      />
-      <button class="search__button" @click="editor.commands.find(searchTerm)">
-        Find
-      </button>
-      <button class="search__button" @click="editor.commands.clearSearch()">
-        Clear
-      </button>
-      <button
-        class="search__button"
-        @click="editor.commands.replace(replaceWith)"
-      >
-        Replace
-      </button>
-      <button
-        class="search__button"
-        @click="editor.commands.replaceAll(replaceWith)"
-      >
-        Replace All
-      </button>
     </div>
-    <editor-content class="editor__content" :editor="editor" />
+    <v-card-text>
+      <editor-content class="editor__content" :editor="editor" />
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer />
+      <v-btn color="success" @click="saveTermsAndConditions()">Guardar</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -170,6 +181,11 @@ export default {
       editor: null
     };
   },
+  methods: {
+    saveTermsAndConditions() {
+      alert("Guardando terminos y condiciones");
+    }
+  },
   mounted() {
     this.editor = new Editor({
       extensions: this.extensions,
@@ -202,6 +218,16 @@ export default {
     background-color: #ffffff;
   }
 }
+.menu__header {
+  z-index: 100;
+  position: fixed;
+  padding: 10px;
+  height: 7rem;
+  background-color: #d3d3d3;
+}
+.editor__content {
+  padding-top: 7rem;
+}
 .menubar__button,
 .search__button {
   font-weight: 700;
@@ -220,7 +246,6 @@ export default {
   background: rgba(255, 213, 0, 0.5);
 }
 .editor {
-  position: relative;
   max-width: 50rem;
   margin: 0 auto 5rem;
   padding: 2rem;
