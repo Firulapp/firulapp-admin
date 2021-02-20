@@ -9,7 +9,10 @@ export default (i18n, admin) => [
   { divider: true },
   {
     text: i18n.t("menu.param_globales"),
-    children: [admin.getResourceLink("servicios")],
+    children: [
+      admin.getResourceLink("servicios"),
+      admin.getResourceLink("razas-de-perros")
+    ],
     expanded: false
   },
   { divider: true },

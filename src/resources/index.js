@@ -2,6 +2,12 @@ export default [
   {
     name: "servicios",
     icon: "mdi-briefcase",
-    routes: ["list"]
+    label: "name"
+  },
+  {
+    name: "razas-de-perros",
+    api: "breeds/list/all",
+    icon: "mdi-dog",
+    label: "name"
   }
 ];
