@@ -21,3 +21,7 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+#except
+ 
+!/node_modules/vuetify-admin/src/providers/data/simpleRest.js
