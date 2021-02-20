@@ -1,49 +1,37 @@
 {
   "translations": {
-    "en": "English",
-    "fr": "French"
+    "en": "English"
   },
   "routes": {
     "home": "Home",
-    "login": "Login",
-    "forgot_password": "Forgot password",
-    "reset_password": "Reset password",
-    "register": "Register",
-    "profile": "Profile",
+    "login": "Iniciar Sesión",
+    "profile": "Perfil",
     "dashboard": "Dashboard",
     "terms_conditions": "Términos & Condiciones",
     "not_found": "Not found"
   },
   "auth": {
-    "username": "Username",
-    "password": "Password",
-    "remember": "Remember",
-    "sign_in": "Sign in",
-    "forgot_password": "Forgot password ?",
-    "send": "Send",
-    "password_confirmation": "Password confirmation",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "remember": "Recordar",
+    "sign_in": "Iniciar Sesión",
+    "send": "Enviar",
     "reset": "Reset",
-    "name": "Account name",
-    "email": "Email",
-    "register": "Register"
+    "name": "Nombre de Cuenta",
+    "email": "Email"
   },
   "profile": {
-    "account": "Account",
-    "password": "Password",
-    "name": "Name",
-    "email": "Email",
-    "current_password": "Current password",
-    "password_confirmation": "Password confirmation",
-    "update": "Update",
-    "account_updated": "Account updated",
-    "password_changed": "Password changed"
+    "account": "Cuenta",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "email": "Email"
   },
   "menu": {
     "login": "Login",
-    "profile": "Profile",
+    "profile": "Perfil",
     "dashboard": "Dashboard",
     "param_globales": "Parámetros Globales",
-    "terms_conditions": "Terms & Conditions"
+    "terms_conditions": "Términos & Condiciones"
       
   },
   "resources": {
