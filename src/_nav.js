@@ -11,7 +11,7 @@ export default (i18n, admin) => [
     text: i18n.t("menu.param_globales"),
     children: [
       admin.getResourceLink("servicios"),
-      admin.getResourceLink("razas-de-perros")
+      admin.getResourceLink("especies")
     ],
     expanded: false
   },

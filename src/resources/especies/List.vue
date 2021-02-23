@@ -20,8 +20,8 @@ export default {
     return {
       fields: [
         { source: "id", sortable: true },
-        { source: "name", sortable: true },
-        { source: "description", sortable: true }
+        { source: "nombre_especie", sortable: true },
+        { source: "descripcion_especie", sortable: true }
       ]
     };
   }
