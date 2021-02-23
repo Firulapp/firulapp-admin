@@ -21,7 +21,8 @@ export default {
       fields: [
         { source: "id", sortable: true },
         { source: "nombreEspecie", sortable: true },
-        { source: "descripcionEspecie", sortable: true }
+        { source: "descripcionEspecie", sortable: true },
+        { source: "estado", sortable: true }
       ]
     };
   }

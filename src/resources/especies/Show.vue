@@ -29,7 +29,8 @@ export default {
       fields: [
         { source: "id", sortable: true },
         { source: "nombreRaza", sortable: true },
-        { source: "descripcion", sortable: true }
+        { source: "descripcion", sortable: true },
+        { source: "estado", sortable: true }
       ]
     };
   }
