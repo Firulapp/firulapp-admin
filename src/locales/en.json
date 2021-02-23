@@ -43,6 +43,15 @@
         "description" : "Descripción",
         "state" : "Estado"
       }
+    },
+    "especies" : {
+      "name": "Especie | Especies",
+      "fields": {
+        "id": "Código",
+        "nombre_especie": "Nombre Especie",
+        "descripcion_especie": "Descripcion",
+        "state" : "Estado"
+      }
     }
   }
 }

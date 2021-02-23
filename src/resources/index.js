@@ -5,8 +5,7 @@ export default [
     label: "name"
   },
   {
-    name: "razas-de-perros",
-    api: "breeds/list/all",
+    name: "especies",
     icon: "mdi-dog",
     label: "name"
   }
