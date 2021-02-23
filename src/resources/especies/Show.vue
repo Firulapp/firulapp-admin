@@ -27,13 +27,8 @@ export default {
   data() {
     return {
       fields: [
-        /*{
-          source: "especie",
-          type: "select",
-          attributes: { reference: "especies", link: "edit", chip: true }
-        },*/
         { source: "id", sortable: true },
-        { source: "nombre_raza", sortable: true },
+        { source: "nombreRaza", sortable: true },
         { source: "descripcion", sortable: true }
       ]
     };

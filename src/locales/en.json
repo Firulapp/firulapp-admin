@@ -48,8 +48,8 @@
       "name": "Especie | Especies",
       "fields": {
         "id": "Código",
-        "nombre_especie": "Nombre Especie",
-        "descripcion_especie": "Descripcion",
+        "nombreEspecie": "Nombre Especie",
+        "descripcionEspecie": "Descripcion",
         "state" : "Estado"
       }
     }
