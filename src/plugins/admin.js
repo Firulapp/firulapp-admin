@@ -4,7 +4,7 @@ import VuetifyAdmin from "vuetify-admin";
 import "vuetify-admin/src/loader";
 
 import {
-  simpleRestDataProvider,
+  jsonServerDataProvider,
   basicAuthProvider
 } from "vuetify-admin/src/providers";
 import { en } from "vuetify-admin/src/locales";
@@ -44,7 +44,7 @@ export default new VuetifyAdmin({
     en
   },
   translations: ["en"],
-  dataProvider: simpleRestDataProvider(http),
+  dataProvider: jsonServerDataProvider(http),
   authProvider: basicAuthProvider(http),
   resources,
   http,
