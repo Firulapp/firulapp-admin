@@ -5,6 +5,11 @@ export default [
     label: "name"
   },
   {
+    name: "razas",
+    icon: "mdi-cat",
+    label: "name"
+  },
+  {
     name: "especies",
     icon: "mdi-dog",
     label: "name"
