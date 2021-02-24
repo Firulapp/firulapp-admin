@@ -22,7 +22,7 @@ export default {
         { source: "id", sortable: true },
         { source: "name", sortable: true },
         { source: "description", sortable: true },
-        { source: "estado", sortable: true }
+        { source: "state", sortable: true }
       ]
     };
   }

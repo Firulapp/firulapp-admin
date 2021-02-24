@@ -28,9 +28,9 @@ export default {
     return {
       fields: [
         { source: "id", sortable: true },
-        { source: "nombreRaza", sortable: true },
-        { source: "descripcion", sortable: true },
-        { source: "estado", sortable: true }
+        { source: "name", sortable: true },
+        { source: "description", sortable: true },
+        { source: "state", sortable: true }
       ]
     };
   }
