@@ -13,5 +13,10 @@ export default [
     name: "especies",
     icon: "mdi-dog",
     label: "name"
+  },
+  {
+    name: "cuidados",
+    icon: "mdi-doctor",
+    label: "name"
   }
 ];

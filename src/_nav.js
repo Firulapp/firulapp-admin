@@ -16,6 +16,7 @@ export default (i18n, admin) => [
     expanded: false
   },
   { divider: true },
+  admin.getResourceLink("cuidados"),
   {
     icon: "mdi-book-open-page-variant",
     text: i18n.t("menu.terms_conditions"),
