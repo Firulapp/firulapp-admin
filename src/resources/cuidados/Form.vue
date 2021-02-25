@@ -20,6 +20,7 @@
               item-value="id"
               label="Razas"
             ></v-select>
+            <v-text-field v-model="url" label="URL" type="text" />
             <v-text-field v-model="title" label="Titulo" type="text" />
             <v-textarea
               name="input-7-1"
@@ -27,6 +28,11 @@
               v-model="description"
               filled
             ></v-textarea>
+            <v-file-input
+              multiple
+              v-model="images"
+              label="Imágenes"
+            ></v-file-input>
           </v-form>
         </v-card-text>
         <v-card-actions>
@@ -45,10 +51,12 @@ export default {
     return {
       description: "asdadasdasd  fdsaasdfdf fsafdasd",
       title: "",
+      url: "",
       razaSeleccionada: null,
       especieSeleccionada: "",
       razas: [],
-      especies: []
+      especies: [],
+      images: []
     };
   },
   methods: {
