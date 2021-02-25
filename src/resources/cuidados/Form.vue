@@ -33,6 +33,7 @@
               v-model="images"
               label="Imágenes"
             ></v-file-input>
+            <v-switch v-model="state" label="Estado"></v-switch>
           </v-form>
         </v-card-text>
         <v-card-actions>
@@ -56,7 +57,8 @@ export default {
       especieSeleccionada: "",
       razas: [],
       especies: [],
-      images: []
+      images: [],
+      state: false
     };
   },
   methods: {
