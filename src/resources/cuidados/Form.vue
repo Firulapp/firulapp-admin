@@ -5,7 +5,7 @@
         <v-card-text>
           <v-form ref="form">
             <v-select
-              v-model="especieSeleccionada"
+              v-model="cuidado.idEspecie"
               :items="especies"
               item-text="name"
               item-value="id"
@@ -13,27 +13,26 @@
               v-on:change="obtenerRazas"
             ></v-select>
             <v-select
-              v-model="razaSeleccionada"
+              v-model="cuidado.idRaza"
               multiple
               :items="razas"
               item-text="name"
               item-value="id"
               label="Razas"
             ></v-select>
-            <v-text-field v-model="url" label="URL" type="text" />
-            <v-text-field v-model="title" label="Titulo" type="text" />
+            <v-text-field v-model="cuidado.url" label="URL" type="text" />
+            <v-text-field v-model="cuidado.title" label="Titulo" type="text" />
             <v-textarea
               name="input-7-1"
               label="Descripción"
-              v-model="description"
+              v-model="cuidado.description"
               filled
             ></v-textarea>
             <v-file-input
-              multiple
-              v-model="images"
+              v-model="cuidado.imagen"
               label="Imágenes"
             ></v-file-input>
-            <v-switch v-model="state" label="Estado"></v-switch>
+            <v-switch v-model="cuidado.state" label="Estado"></v-switch>
           </v-form>
         </v-card-text>
         <v-card-actions>
@@ -48,17 +47,20 @@
 <script>
 const axios = require("axios");
 export default {
+  props: ["id", "title", "item"],
   data() {
     return {
-      description: "asdadasdasd  fdsaasdfdf fsafdasd",
-      title: "",
-      url: "",
-      razaSeleccionada: null,
-      especieSeleccionada: "",
+      cuidado: {
+        description: "",
+        title: "",
+        url: "",
+        idRaza: null,
+        idEspecie: "",
+        imagen: {},
+        state: false
+      },
       razas: [],
-      especies: [],
-      images: [],
-      state: false
+      especies: []
     };
   },
   methods: {
