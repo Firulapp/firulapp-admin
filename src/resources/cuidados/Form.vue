@@ -29,8 +29,10 @@
               filled
             ></v-textarea>
             <v-file-input
-              v-model="cuidado.imagen"
+              v-model="file"
+              accept="image/*"
               label="Imágenes"
+              v-on:change="onFileChange"
             ></v-file-input>
             <v-switch v-model="cuidado.state" label="Estado"></v-switch>
           </v-form>
@@ -56,14 +58,23 @@ export default {
         url: "",
         idRaza: null,
         idEspecie: "",
-        imagen: {},
+        imagen: null,
         state: false
       },
+      file: null,
       razas: [],
       especies: []
     };
   },
   methods: {
+    onFileChange() {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file);
+      reader.onload = e => {
+        this.cuidado.imagen = e.target.result;
+        //console.log(this.cuidado.imagen);
+      };
+    },
     obtenerRazas() {
       axios
         .get(
@@ -76,7 +87,20 @@ export default {
           alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
         });
     },
-    guardarCuidado() {}
+    guardarCuidado() {
+      /*console.log("cuidado");
+      console.log(this.cuidado);
+      console.log("cuidado.imagen");
+      console.log(this.cuidado.imagen);*/
+      axios
+        .post(`http://localhost:8081/api/cuidados`, this.cuidado)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(errorResponse => {
+          alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
+        });
+    }
   },
   mounted() {
     axios
