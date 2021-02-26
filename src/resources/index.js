@@ -18,5 +18,15 @@ export default [
     name: "cuidados",
     icon: "mdi-doctor",
     label: "name"
+  },
+  {
+    name: "organizaciones",
+    icon: "mdi-email",
+    label: "name"
+  },
+  {
+    name: "ayudas",
+    icon: "mdi-message-video",
+    label: "name"
   }
 ];

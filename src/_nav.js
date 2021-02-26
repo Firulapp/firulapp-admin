@@ -2,12 +2,6 @@
 
 export default (i18n, admin) => [
   {
-    icon: "mdi-view-dashboard",
-    text: i18n.t("menu.dashboard"),
-    link: "/"
-  },
-  { divider: true },
-  {
     text: i18n.t("menu.param_globales"),
     children: [
       admin.getResourceLink("servicios"),
@@ -17,6 +11,8 @@ export default (i18n, admin) => [
   },
   { divider: true },
   admin.getResourceLink("cuidados"),
+  admin.getResourceLink("organizaciones"),
+  admin.getResourceLink("ayudas"),
   {
     icon: "mdi-book-open-page-variant",
     text: i18n.t("menu.terms_conditions"),
