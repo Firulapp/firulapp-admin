@@ -3,10 +3,8 @@ import VuetifyAdmin from "vuetify-admin";
 
 import "vuetify-admin/src/loader";
 
-import {
-  simpleRestDataProvider,
-  basicAuthProvider
-} from "vuetify-admin/src/providers";
+import { jsonServerDataProvider } from "vuetify-admin/src/providers";
+import { firulappAuthProvider } from "../providers";
 import { en } from "vuetify-admin/src/locales";
 
 import router from "@/router";
@@ -24,10 +22,11 @@ Vue.use(VuetifyAdmin);
 /**
  * Axios instance
  */
-const baseURL = process.env.VUE_APP_API_URL || "http://localhost:9000/api";
+const baseURL = process.env.VUE_APP_API_URL || "http://localhost:8081/api";
 
 const http = axios.create({
   baseURL,
+  withCredentials: true,
   headers: { "X-Requested-With": "XMLHttpRequest" }
 });
 
@@ -44,8 +43,8 @@ export default new VuetifyAdmin({
     en
   },
   translations: ["en"],
-  dataProvider: simpleRestDataProvider(http),
-  authProvider: basicAuthProvider(http),
+  dataProvider: jsonServerDataProvider(http),
+  authProvider: firulappAuthProvider(http),
   resources,
   http,
   options: {

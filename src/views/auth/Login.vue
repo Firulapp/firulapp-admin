@@ -12,7 +12,7 @@
       :label="$t('auth.password')"
       prepend-icon="mdi-lock"
       type="password"
-      v-model="form.password"
+      v-model="form.encryptedPassword"
       required
     ></v-text-field>
 
@@ -38,7 +38,8 @@ export default {
     return {
       form: {
         username: null,
-        password: null
+        encryptedPassword: null,
+        loguedIn: true
       },
       errorMessages: {},
       loading: false
