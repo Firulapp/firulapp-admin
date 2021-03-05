@@ -12,8 +12,7 @@ export default (axios, params = {}) => {
   params = {
     routes: {
       login: "/user/login",
-      logout: "/user/logout",
-      user: "/user/type?userType=ADMIN"
+      logout: "/user/logout"
     },
     getCredentials: ({ username, encryptedPassword, loguedIn }) => {
       return {
@@ -22,13 +21,27 @@ export default (axios, params = {}) => {
         loguedIn
       };
     },
+    getAppSessionDto: ({ id, userId, deviceId }) => {
+      return {
+        id: id,
+        userId: userId,
+        deviceId: deviceId
+      };
+    },
     getName: u => u.name,
     getEmail: u => u.username,
     getPermissions: u => u.roles,
     ...params
   };
 
-  let { routes, getCredentials, getName, getEmail, getPermissions } = params;
+  let {
+    routes,
+    getCredentials,
+    getAppSessionDto,
+    getName,
+    getEmail,
+    getPermissions
+  } = params;
 
   return {
     [LOGIN]: async ({ username, encryptedPassword, loguedIn }) => {
@@ -40,23 +53,30 @@ export default (axios, params = {}) => {
       if (response.status < 200 || response.status >= 300) {
         throw new Error(response.statusText);
       }
+      // Put the object into storage
+      localStorage.setItem("loggedUser", JSON.stringify(response.data.dto));
       return Promise.resolve();
     },
     [LOGOUT]: async () => {
-      await axios.post(routes.logout);
+      let loggedUser = localStorage.getItem("loggedUser");
+      loggedUser = JSON.parse(loggedUser);
+      let id = loggedUser["id"];
+      let userId = loggedUser["userId"];
+      let deviceId = loggedUser["deviceId"];
+      await axios.post(
+        routes.logout,
+        getAppSessionDto({ id, userId, deviceId })
+      );
+
+      localStorage.removeItem("loggedUser");
       return Promise.resolve();
     },
     [CHECK_AUTH]: async () => {
-      let response = await axios.get(routes.user);
-
-      if (response.status < 200 || response.status >= 300) {
-        throw new Error(response.statusText);
-      }
-      if (response.data.list[0].loguedIn) {
+      let loggedUser = localStorage.getItem("loggedUser");
+      loggedUser = JSON.parse(loggedUser);
+      if (loggedUser["userId"]) {
         return Promise.resolve({
-          data: {
-            name: response.data.list[0].username
-          }
+          data: true
         });
       }
       return Promise.reject();
