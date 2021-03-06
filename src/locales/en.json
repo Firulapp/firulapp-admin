@@ -50,7 +50,7 @@
         "id": "Código",
         "name": "Nombre Especie",
         "description": "Descripcion",
-        "state" : "Estado"
+        "status" : "Estado"
       }
     }
   }

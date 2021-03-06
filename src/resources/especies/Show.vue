@@ -9,7 +9,7 @@
     >
       <va-list
         resource="razas"
-        disable-pagination
+        :items-per-page="10"
         disable-query-string
         :filter="{
           especieId: id
@@ -30,7 +30,7 @@ export default {
         { source: "id", sortable: true },
         { source: "name", sortable: true },
         { source: "description", sortable: true },
-        { source: "state", sortable: true }
+        { source: "status", sortable: true }
       ]
     };
   }
