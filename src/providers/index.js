@@ -1,3 +1,6 @@
 import firulappAuthProvider from "./auth/firulapp";
+import jsonServerDataProvider from "./data/jsonServer";
 
-export { firulappAuthProvider };
+import FetchJson from "./utils/fetchJson";
+
+export { jsonServerDataProvider, firulappAuthProvider, FetchJson };
