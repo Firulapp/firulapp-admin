@@ -3,8 +3,7 @@ import VuetifyAdmin from "vuetify-admin";
 
 import "vuetify-admin/src/loader";
 
-import { jsonServerDataProvider } from "vuetify-admin/src/providers";
-import { firulappAuthProvider } from "../providers";
+import { firulappAuthProvider, jsonServerDataProvider } from "../providers";
 import { en } from "vuetify-admin/src/locales";
 
 import router from "@/router";
