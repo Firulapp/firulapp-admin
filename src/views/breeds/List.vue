@@ -1,5 +1,14 @@
 <template>
   <div id="app">
+    <v-select
+      v-model="speciesId"
+      :items="species"
+      item-text="name"
+      item-value="id"
+      label="Especies"
+      solo
+      v-on:change="obtenerRazas"
+    ></v-select>
     <v-data-table
       :headers="headers"
       :items="items"
@@ -39,20 +48,22 @@
         </tr>
       </template>
     </v-data-table>
-    <speciesForm
+    <breedForm
       :showDialog="showDialog"
-      :item="species"
+      :speciesId="speciesId"
+      :item="breed"
       @setShowDialog="setShowDialog"
-    ></speciesForm>
+      @setSpeciesId="setSpeciesId"
+    ></breedForm>
   </div>
 </template>
 
 <script>
 const axios = require("axios");
-import speciesForm from "@/views/species/Form";
+import breedForm from "@/views/breeds/Form";
 export default {
   components: {
-    speciesForm
+    breedForm
   },
   data() {
     return {
@@ -64,7 +75,9 @@ export default {
         { text: "Acciones", value: "actions", sortable: false }
       ],
       items: [],
-      species: {},
+      species: [],
+      breed: {},
+      speciesId: null,
       loadingTable: true,
       search: "",
       showDialog: false
@@ -72,16 +85,20 @@ export default {
   },
   methods: {
     create() {
-      this.species = {};
+      this.breed.id = null;
+      this.breed.name = "";
+      this.breed.description = "";
+      this.breed.status = false;
+      this.breed.speciesId = this.speciesId;
       this.setShowDialog();
     },
     edit(item) {
-      this.species = item;
+      this.breed = item;
       this.setShowDialog();
     },
     remove(item) {
       axios
-        .delete("http://localhost:9000/api/param/species", item, {
+        .delete("http://localhost:9000/api/param/breed", item, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -94,15 +111,22 @@ export default {
     },
     setShowDialog() {
       this.showDialog = !this.showDialog;
+    },
+    obtenerRazas() {
+      axios
+        .get("http://localhost:9000/api/param/breed?_start=0&_end=1000")
+        .then(response => {
+          this.items = response.data.list;
+        });
+      this.loadingTable = false;
     }
   },
   mounted() {
     axios
-      .get("http://localhost:9000/api/param/species?_start=0&_end=15")
+      .get("http://localhost:9000/api/param/species?_start=0&_end=100")
       .then(response => {
-        this.items = response.data.list;
+        this.species = response.data.list;
       });
-    this.loadingTable = false;
   }
 };
 </script>

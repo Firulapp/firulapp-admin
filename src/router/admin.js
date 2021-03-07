@@ -2,6 +2,7 @@ import Vue from "vue";
 import AdminLayout from "@/layouts/Admin";
 import TermsConditions from "@/views/terms-conditions";
 import ListSpecies from "@/views/species/List";
+import ListBreeds from "@/views/breeds/List";
 import Dashboard from "@/views/Dashboard";
 import Error from "@/views/Error";
 import i18n from "@/i18n";
@@ -40,6 +41,14 @@ export default {
       component: ListSpecies,
       meta: {
         title: "Especies"
+      }
+    },
+    {
+      path: "/species/breeds",
+      name: "breeds",
+      component: ListBreeds,
+      meta: {
+        title: "Razas"
       }
     },
     {

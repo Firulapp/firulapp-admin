@@ -9,6 +9,11 @@ export default (i18n, admin) => [
         text: "Especies",
         link: "/species"
       },
+      {
+        icon: "mdi-cat",
+        text: "Razas",
+        link: "/species/breeds"
+      },
       admin.getResourceLink("servicios")
     ],
     expanded: false
