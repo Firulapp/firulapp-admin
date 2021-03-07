@@ -65,7 +65,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(this.file);
       reader.onload = e => {
-        this.petcare.picture = e.target.result;
+        this.item.picture = e.target.result;
       };
     },
     getBreeds() {
@@ -96,12 +96,9 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:8081/api/especies")
+      .get("http://localhost:9000/api/param/species?_start=0&_end=100")
       .then(response => {
-        this.especies = response.data;
-      })
-      .catch(errorResponse => {
-        alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
+        this.species = response.data.list;
       });
   }
 };
