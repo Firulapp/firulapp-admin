@@ -29,7 +29,11 @@ export default (i18n, admin) => [
     text: "Cuidados"
   },
   admin.getResourceLink("organizaciones"),
-  admin.getResourceLink("ayudas"),
+  {
+    link: "/help",
+    icon: "mdi-message-video",
+    text: "Ayudas"
+  },
   {
     icon: "mdi-book-open-page-variant",
     text: i18n.t("menu.terms_conditions"),
