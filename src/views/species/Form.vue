@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="showDialog" persistent="persistent" :max-width="800">
     <v-card class="elevation-1">
-      <v-card-title>Editar</v-card-title>
+      <v-card-title>Especies</v-card-title>
       <v-card-text>
         <v-form v-model="validForm" ref="form">
           <v-text-field
@@ -18,7 +18,7 @@
           />
           <v-text-field
             v-model="item.description"
-            label="Nombre de especie"
+            label="Descripción"
             name="name"
             type="text"
           />
