@@ -151,6 +151,7 @@ import {
   History,
   Search
 } from "tiptap-extensions";
+const axios = require("axios");
 export default {
   components: {
     EditorContent,
@@ -183,13 +184,22 @@ export default {
   },
   methods: {
     saveTermsAndConditions() {
-      alert("Guardando terminos y condiciones");
+      axios
+        .post("http://localhost:9000/api/param/rules", this.edit.content)
+        .then(response => {
+          this.editor = new Editor({
+            extensions: this.extensions,
+            content: response.data.dto
+          });
+        });
     }
   },
   mounted() {
-    this.editor = new Editor({
-      extensions: this.extensions,
-      content: `<p>This is just a boring paragraph</p>`
+    axios.get("http://localhost:9000/api/param/rules").then(response => {
+      this.editor = new Editor({
+        extensions: this.extensions,
+        content: response.data.dto
+      });
     });
   },
   beforeDestroy() {
