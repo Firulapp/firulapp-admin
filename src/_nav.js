@@ -4,8 +4,12 @@ export default (i18n, admin) => [
   {
     text: i18n.t("menu.param_globales"),
     children: [
-      admin.getResourceLink("servicios"),
-      admin.getResourceLink("especies")
+      {
+        icon: "mdi-dog",
+        text: "Especies", //i18n.t("menu.terms_conditions"),
+        link: "/species"
+      },
+      admin.getResourceLink("servicios")
     ],
     expanded: false
   },

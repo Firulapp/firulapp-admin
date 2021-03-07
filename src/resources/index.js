@@ -6,18 +6,6 @@ export default [
     label: "name"
   },
   {
-    api: "/param/breed",
-    name: "razas",
-    icon: "mdi-cat",
-    label: "name"
-  },
-  {
-    api: "/param/species",
-    name: "especies",
-    icon: "mdi-dog",
-    label: "name"
-  },
-  {
     api: "/param/petcare",
     name: "cuidados",
     icon: "mdi-doctor",

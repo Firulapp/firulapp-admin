@@ -1,6 +1,7 @@
 import Vue from "vue";
 import AdminLayout from "@/layouts/Admin";
 import TermsConditions from "@/views/terms-conditions";
+import ListSpecies from "@/views/species/List";
 import Dashboard from "@/views/Dashboard";
 import Error from "@/views/Error";
 import i18n from "@/i18n";
@@ -31,6 +32,14 @@ export default {
       component: TermsConditions,
       meta: {
         title: i18n.t("routes.terms_conditions")
+      }
+    },
+    {
+      path: "/species",
+      name: "species",
+      component: ListSpecies,
+      meta: {
+        title: "Especies"
       }
     },
     {
