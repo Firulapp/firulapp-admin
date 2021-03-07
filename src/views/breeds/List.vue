@@ -117,7 +117,7 @@ export default {
     },
     obtenerRazas() {
       axios
-        .get(`http://localhost:9000/api/param/breed/${this.speciesId}`)
+        .get(`http://localhost:9000/api/param/breed/species/${this.speciesId}`)
         .then(response => {
           this.items = response.data.list;
         });
