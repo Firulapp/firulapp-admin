@@ -181,7 +181,8 @@ export default {
       ],
       html: "",
       editor: {},
-      object: {}
+      object: {},
+      user: {}
     };
   },
   methods: {
@@ -206,6 +207,8 @@ export default {
     }
   },
   mounted() {
+    let loggedUser = localStorage.getItem("loggedUser");
+    this.user = JSON.parse(loggedUser);
     axios
       .get("http://localhost:9000/api/param/rules/1")
       .then(response => {
@@ -219,7 +222,7 @@ export default {
         });
       })
       .catch(errorResponse => {
-        this.object.createdBy = 1;
+        this.object.createdBy = this.user["userId"];
         console.log(errorResponse);
         this.editor = new Editor({
           extensions: this.extensions,

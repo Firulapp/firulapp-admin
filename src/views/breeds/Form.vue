@@ -50,15 +50,16 @@ export default {
   props: ["item", "showDialog", "speciesId", "isNew"],
   data() {
     return {
-      validForm: true
+      validForm: true,
+      user: {}
     };
   },
   methods: {
     save() {
       if (this.isNew) {
-        this.item.createdBy = 1;
+        this.item.createdBy = this.user["userId"];
       } else {
-        this.item.modifiedBy = 1;
+        this.item.modifiedBy = this.user["userId"];
       }
       axios
         .post("http://localhost:9000/api/param/breed", this.item, {
@@ -66,7 +67,7 @@ export default {
         })
         .then(response => {
           this.item = response.data.dto;
-          alert("Guardado!");
+          window.location.reload();
         })
         .catch(errorResponse => {
           alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
@@ -77,6 +78,9 @@ export default {
       this.$emit("setShowDialog", this.showDialog);
     }
   },
-  mounted() {}
+  mounted() {
+    let loggedUser = localStorage.getItem("loggedUser");
+    this.user = JSON.parse(loggedUser);
+  }
 };
 </script>

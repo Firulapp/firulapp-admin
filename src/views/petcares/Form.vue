@@ -57,7 +57,8 @@ export default {
     return {
       breeds: [],
       species: [],
-      file: null
+      file: null,
+      user: {}
     };
   },
   methods: {
@@ -80,9 +81,9 @@ export default {
     },
     save() {
       if (this.isNew) {
-        this.petcare.createdBy = 1;
+        this.petcare.createdBy = this.user["userId"];
       } else {
-        this.petcare.modifiedBy = 1;
+        this.petcare.modifiedBy = this.user["userId"];
       }
       axios
         .post("http://localhost:9000/api/param/petcare", this.petcare, {
@@ -90,7 +91,7 @@ export default {
         })
         .then(response => {
           this.petcare = response.data.dto;
-          alert("Guardado!");
+          window.location.reload();
         })
         .catch(errorResponse => {
           alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
@@ -105,6 +106,8 @@ export default {
     axios.get("http://localhost:9000/api/param/species").then(response => {
       this.species = response.data.list;
     });
+    let loggedUser = localStorage.getItem("loggedUser");
+    this.user = JSON.parse(loggedUser);
   }
 };
 </script>
