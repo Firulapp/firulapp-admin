@@ -70,7 +70,7 @@ export default {
     },
     getBreeds() {
       axios
-        .get("http://localhost:9000/api/param/breed?_start=0&_end=1000")
+        .get(`http://localhost:9000/api/param/breed/${this.item.speciesId}`)
         .then(response => {
           this.breeds = response.data.list;
         });
