@@ -29,9 +29,6 @@
       <template v-slot:[`item.actions`]="{ item }">
         <tr>
           <td>
-            <v-btn icon @click="view(item)">
-              <v-icon>mdi-eye</v-icon>
-            </v-btn>
             <v-btn icon @click="edit(item)">
               <v-icon>mdi-lead-pencil</v-icon>
             </v-btn>
@@ -78,9 +75,6 @@ export default {
     create() {
       this.species = {};
       this.setShowDialog();
-    },
-    view() {
-      alert("viewing...");
     },
     edit(item) {
       this.species = item;
