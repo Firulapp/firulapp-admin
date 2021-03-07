@@ -6,7 +6,7 @@ export default (i18n, admin) => [
     children: [
       {
         icon: "mdi-dog",
-        text: "Especies", //i18n.t("menu.terms_conditions"),
+        text: "Especies",
         link: "/species"
       },
       admin.getResourceLink("servicios")
