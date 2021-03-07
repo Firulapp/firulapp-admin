@@ -10,6 +10,7 @@ import router from "@/router";
 import routes from "@/router/admin";
 import store from "@/store";
 import i18n from "@/i18n";
+import resources from "@/resources";
 import axios from "axios";
 
 /**
@@ -42,6 +43,7 @@ export default new VuetifyAdmin({
   },
   translations: ["en"],
   authProvider: firulappAuthProvider(http),
+  resources,
   http,
   options: {
     dateFormat: "long"
