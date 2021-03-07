@@ -5,6 +5,7 @@ import ListSpecies from "@/views/species/List";
 import ListBreeds from "@/views/breeds/List";
 import ListPetCare from "@/views/petcares/List";
 import ListServices from "@/views/services/List";
+import ListOrganizations from "@/views/organizations/List";
 import ListHelp from "@/views/help/List";
 import Dashboard from "@/views/Dashboard";
 import Error from "@/views/Error";
@@ -76,6 +77,14 @@ export default {
       component: ListHelp,
       meta: {
         title: "Ayudas"
+      }
+    },
+    {
+      path: "/organizations",
+      name: "organizations",
+      component: ListOrganizations,
+      meta: {
+        title: "Organizaciones"
       }
     },
     {

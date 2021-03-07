@@ -28,7 +28,11 @@ export default (i18n, admin) => [
     icon: "mdi-doctor",
     text: "Cuidados"
   },
-  admin.getResourceLink("organizaciones"),
+  {
+    link: "/organizations",
+    icon: "mdi-email",
+    text: "Organizaciones"
+  },
   {
     link: "/help",
     icon: "mdi-message-video",
