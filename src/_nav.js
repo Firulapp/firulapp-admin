@@ -19,7 +19,11 @@ export default (i18n, admin) => [
     expanded: false
   },
   { divider: true },
-  admin.getResourceLink("cuidados"),
+  {
+    link: "/pet-care",
+    icon: "mdi-doctor",
+    text: "Cuidados"
+  },
   admin.getResourceLink("organizaciones"),
   admin.getResourceLink("ayudas"),
   {

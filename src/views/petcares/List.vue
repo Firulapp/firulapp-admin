@@ -1,14 +1,5 @@
 <template>
   <div id="app">
-    <v-select
-      v-model="speciesId"
-      :items="species"
-      item-text="name"
-      item-value="id"
-      label="Especies"
-      solo
-      v-on:change="obtenerRazas"
-    ></v-select>
     <v-data-table
       :headers="headers"
       :items="items"
@@ -48,35 +39,34 @@
         </tr>
       </template>
     </v-data-table>
-    <breedForm
+    <petCaresForm
       :showDialog="showDialog"
-      :speciesId="speciesId"
-      :item="breed"
+      :item="petcare"
       @setShowDialog="setShowDialog"
-    ></breedForm>
+    ></petCaresForm>
   </div>
 </template>
 
 <script>
 const axios = require("axios");
-import breedForm from "@/views/breeds/Form";
+import petCaresForm from "@/views/petcares/Form";
 export default {
   components: {
-    breedForm
+    petCaresForm
   },
   data() {
     return {
       headers: [
         { text: "Id", value: "id" },
+        { text: "Id de Especie", value: "speciesId", sortable: false },
+        { text: "Id de Raza", value: "breedId", sortable: false },
         { text: "Nombre", value: "name", sortable: false },
         { text: "Descripción", value: "description", sortable: false },
         { text: "Estado", value: "status", sortable: false },
         { text: "Acciones", value: "actions", sortable: false }
       ],
       items: [],
-      species: [],
-      breed: {},
-      speciesId: null,
+      petcare: {},
       loadingTable: true,
       search: "",
       showDialog: false
@@ -84,20 +74,16 @@ export default {
   },
   methods: {
     create() {
-      this.breed.id = null;
-      this.breed.name = "";
-      this.breed.description = "";
-      this.breed.status = false;
-      this.breed.speciesId = this.speciesId;
+      this.petcare = {};
       this.setShowDialog();
     },
     edit(item) {
-      this.breed = item;
+      this.petcare = item;
       this.setShowDialog();
     },
     remove(item) {
       axios
-        .delete("http://localhost:9000/api/param/breed", item, {
+        .delete("http://localhost:9000/api/param/petcare", item, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -110,22 +96,15 @@ export default {
     },
     setShowDialog() {
       this.showDialog = !this.showDialog;
-    },
-    obtenerRazas() {
-      axios
-        .get("http://localhost:9000/api/param/breed?_start=0&_end=1000")
-        .then(response => {
-          this.items = response.data.list;
-        });
-      this.loadingTable = false;
     }
   },
   mounted() {
     axios
-      .get("http://localhost:9000/api/param/species?_start=0&_end=100")
+      .get("http://localhost:9000/api/param/petcare?_start=0&_end=15")
       .then(response => {
-        this.species = response.data.list;
+        this.items = response.data.list;
       });
+    this.loadingTable = false;
   }
 };
 </script>

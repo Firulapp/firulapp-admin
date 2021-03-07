@@ -3,6 +3,7 @@ import AdminLayout from "@/layouts/Admin";
 import TermsConditions from "@/views/terms-conditions";
 import ListSpecies from "@/views/species/List";
 import ListBreeds from "@/views/breeds/List";
+import ListPetCare from "@/views/petcares/List";
 import Dashboard from "@/views/Dashboard";
 import Error from "@/views/Error";
 import i18n from "@/i18n";
@@ -49,6 +50,14 @@ export default {
       component: ListBreeds,
       meta: {
         title: "Razas"
+      }
+    },
+    {
+      path: "/pet-care",
+      name: "petcares",
+      component: ListPetCare,
+      meta: {
+        title: "Cuidados"
       }
     },
     {

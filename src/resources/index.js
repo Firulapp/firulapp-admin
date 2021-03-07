@@ -6,12 +6,6 @@ export default [
     label: "name"
   },
   {
-    api: "/param/petcare",
-    name: "cuidados",
-    icon: "mdi-doctor",
-    label: "name"
-  },
-  {
     api: "/param/organizations",
     name: "organizaciones",
     icon: "mdi-email",
