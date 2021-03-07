@@ -42,6 +42,7 @@
     <speciesForm
       :showDialog="showDialog"
       :item="species"
+      :isNew="isNew"
       @setShowDialog="setShowDialog"
     ></speciesForm>
   </div>
@@ -67,16 +68,19 @@ export default {
       species: {},
       loadingTable: true,
       search: "",
-      showDialog: false
+      showDialog: false,
+      isNew: false
     };
   },
   methods: {
     create() {
       this.species = {};
+      this.isNew = true;
       this.setShowDialog();
     },
     edit(item) {
       this.species = item;
+      this.isNew = false;
       this.setShowDialog();
     },
     remove(item) {

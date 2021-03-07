@@ -42,6 +42,7 @@
     <helpForm
       :showDialog="showDialog"
       :item="help"
+      :isNew="isNew"
       @setShowDialog="setShowDialog"
     ></helpForm>
   </div>
@@ -68,16 +69,19 @@ export default {
       help: {},
       loadingTable: true,
       search: "",
-      showDialog: false
+      showDialog: false,
+      isNew: false
     };
   },
   methods: {
     create() {
       this.help = {};
+      this.isNew = true;
       this.setShowDialog();
     },
     edit(item) {
       this.help = item;
+      this.isNew = false;
       this.setShowDialog();
     },
     remove(item) {

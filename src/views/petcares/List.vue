@@ -42,6 +42,7 @@
     <petCaresForm
       :showDialog="showDialog"
       :item="petcare"
+      :isNew="isNew"
       @setShowDialog="setShowDialog"
     ></petCaresForm>
   </div>
@@ -69,16 +70,19 @@ export default {
       petcare: {},
       loadingTable: true,
       search: "",
-      showDialog: false
+      showDialog: false,
+      isNew: false
     };
   },
   methods: {
     create() {
       this.petcare = {};
+      this.isNew = true;
       this.setShowDialog();
     },
     edit(item) {
       this.petcare = item;
+      this.isNew = false;
       this.setShowDialog();
     },
     remove(item) {

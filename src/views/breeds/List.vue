@@ -52,6 +52,7 @@
       :showDialog="showDialog"
       :speciesId="speciesId"
       :item="breed"
+      :isNew="isNew"
       @setShowDialog="setShowDialog"
     ></breedForm>
   </div>
@@ -76,6 +77,7 @@ export default {
       items: [],
       species: [],
       breed: {},
+      isNew: false,
       speciesId: null,
       loadingTable: true,
       search: "",
@@ -84,6 +86,7 @@ export default {
   },
   methods: {
     create() {
+      this.isNew = true;
       this.breed.id = null;
       this.breed.name = "";
       this.breed.description = "";
@@ -92,6 +95,7 @@ export default {
       this.setShowDialog();
     },
     edit(item) {
+      this.isNew = false;
       this.breed = item;
       this.setShowDialog();
     },

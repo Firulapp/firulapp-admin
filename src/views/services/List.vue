@@ -42,6 +42,7 @@
     <serviceForm
       :showDialog="showDialog"
       :item="service"
+      :isNew="isNew"
       @setShowDialog="setShowDialog"
     ></serviceForm>
   </div>
@@ -67,16 +68,19 @@ export default {
       service: {},
       loadingTable: true,
       search: "",
-      showDialog: false
+      showDialog: false,
+      isNew: false
     };
   },
   methods: {
     create() {
       this.service = {};
+      this.isNew = true;
       this.setShowDialog();
     },
     edit(item) {
       this.service = item;
+      this.isNew = false;
       this.setShowDialog();
     },
     remove(item) {

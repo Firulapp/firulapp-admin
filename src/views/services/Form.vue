@@ -41,7 +41,7 @@
 <script>
 const axios = require("axios");
 export default {
-  props: ["item", "showDialog"],
+  props: ["item", "showDialog", "isNew"],
   data() {
     return {
       validForm: true
@@ -49,6 +49,11 @@ export default {
   },
   methods: {
     save() {
+      if (this.isNew) {
+        this.item.createdBy = 1;
+      } else {
+        this.item.modifiedBy = 1;
+      }
       axios
         .post("http://localhost:9000/api/param/service/type", this.item, {
           headers: { "X-Requested-With": "XMLHttpRequest" }

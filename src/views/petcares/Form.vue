@@ -52,7 +52,7 @@
 <script>
 const axios = require("axios");
 export default {
-  props: ["item", "showDialog"],
+  props: ["item", "showDialog", "isNew"],
   data() {
     return {
       breeds: [],
@@ -77,6 +77,11 @@ export default {
       this.loadingTable = false;
     },
     save() {
+      if (this.isNew) {
+        this.petcare.createdBy = 1;
+      } else {
+        this.petcare.modifiedBy = 1;
+      }
       axios
         .post("http://localhost:9000/api/param/petcare", this.petcare, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
