@@ -31,27 +31,6 @@
     "profile": "Perfil",
     "dashboard": "Dashboard",
     "param_globales": "Parámetros Globales",
-    "terms_conditions": "Términos & Condiciones"
-      
-  },
-  "resources": {
-    "servicios": {
-      "name": "Tipo de Servicio | Tipo de Servicios",
-      "fields": {
-        "id": "Código",
-        "name": "Nombre",
-        "description" : "Descripción",
-        "state" : "Estado"
-      }
-    },
-    "especies" : {
-      "name": "Especie | Especies",
-      "fields": {
-        "id": "Código",
-        "name": "Nombre Especie",
-        "description": "Descripcion",
-        "status" : "Estado"
-      }
-    }
+    "terms_conditions": "Términos & Condiciones"   
   }
 }

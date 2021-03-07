@@ -3,14 +3,13 @@ import VuetifyAdmin from "vuetify-admin";
 
 import "vuetify-admin/src/loader";
 
-import { firulappAuthProvider, jsonServerDataProvider } from "../providers";
+import { firulappAuthProvider } from "../providers";
 import { en } from "vuetify-admin/src/locales";
 
 import router from "@/router";
 import routes from "@/router/admin";
 import store from "@/store";
 import i18n from "@/i18n";
-import resources from "@/resources";
 import axios from "axios";
 
 /**
@@ -42,9 +41,7 @@ export default new VuetifyAdmin({
     en
   },
   translations: ["en"],
-  dataProvider: jsonServerDataProvider(http),
   authProvider: firulappAuthProvider(http),
-  resources,
   http,
   options: {
     dateFormat: "long"
