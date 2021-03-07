@@ -179,28 +179,56 @@ export default {
           disableRegex: false
         })
       ],
-      editor: null
+      html: "",
+      editor: {},
+      object: {}
     };
   },
   methods: {
     saveTermsAndConditions() {
+      this.object.name = "Reglas de Conducta";
+      this.object.status = true;
+      this.object.description = this.html;
       axios
-        .post("http://localhost:9000/api/param/rules", this.edit.content)
+        .post("http://localhost:9000/api/param/rules", this.object, {
+          headers: { "X-Requested-With": "XMLHttpRequest" }
+        })
         .then(response => {
           this.editor = new Editor({
             extensions: this.extensions,
-            content: response.data.dto
+            content: response.data.dto,
+            onUpdate: ({ getHTML }) => {
+              this.html = getHTML();
+            }
           });
+          alert("Guardado!");
         });
     }
   },
   mounted() {
-    axios.get("http://localhost:9000/api/param/rules/1").then(response => {
-      this.editor = new Editor({
-        extensions: this.extensions,
-        content: response.data.dto
+    axios
+      .get("http://localhost:9000/api/param/rules/1")
+      .then(response => {
+        this.object = response.data.dto;
+        this.editor = new Editor({
+          extensions: this.extensions,
+          content: response.data.dto.description,
+          onUpdate: ({ getHTML }) => {
+            this.html = getHTML();
+          }
+        });
+      })
+      .catch(errorResponse => {
+        this.object.createdBy = 1;
+        console.log(errorResponse);
+        this.editor = new Editor({
+          extensions: this.extensions,
+          content: `<h1>Terminos y Condiciones</h1>`,
+          onUpdate: ({ getHTML }) => {
+            this.html = getHTML();
+          }
+        });
       });
-    });
   },
   beforeDestroy() {
     this.editor.destroy();
