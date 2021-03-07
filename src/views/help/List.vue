@@ -98,11 +98,9 @@ export default {
     }
   },
   mounted() {
-    axios
-      .get("http://localhost:9000/api/param/help?_start=0&_end=15")
-      .then(response => {
-        this.items = response.data.list;
-      });
+    axios.get("http://localhost:9000/api/param/help").then(response => {
+      this.items = response.data.list;
+    });
     this.loadingTable = false;
   }
 };
