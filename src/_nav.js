@@ -14,7 +14,11 @@ export default (i18n, admin) => [
         text: "Razas",
         link: "/species/breeds"
       },
-      admin.getResourceLink("servicios")
+      {
+        icon: "mdi-briefcase",
+        text: "Servicios",
+        link: "/services"
+      }
     ],
     expanded: false
   },

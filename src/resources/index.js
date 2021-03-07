@@ -1,11 +1,5 @@
 export default [
   {
-    api: "/param/service/type",
-    name: "servicios",
-    icon: "mdi-briefcase",
-    label: "name"
-  },
-  {
     api: "/param/organizations",
     name: "organizaciones",
     icon: "mdi-email",
