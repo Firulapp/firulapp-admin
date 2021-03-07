@@ -195,7 +195,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:9000/api/param/rules").then(response => {
+    axios.get("http://localhost:9000/api/param/rules/1").then(response => {
       this.editor = new Editor({
         extensions: this.extensions,
         content: response.data.dto
