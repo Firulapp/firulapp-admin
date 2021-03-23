@@ -2,10 +2,45 @@
 
 export default (i18n, admin) => [
   {
-    icon: "mdi-view-dashboard",
-    text: i18n.t("menu.dashboard"),
-    link: "/"
+    text: i18n.t("menu.param_globales"),
+    children: [
+      {
+        icon: "mdi-dog",
+        text: "Especies",
+        link: "/species"
+      },
+      {
+        icon: "mdi-cat",
+        text: "Razas",
+        link: "/species/breeds"
+      },
+      {
+        icon: "mdi-briefcase",
+        text: "Servicios",
+        link: "/services"
+      }
+    ],
+    expanded: false
   },
   { divider: true },
-  admin.getResourceLink("users")
+  {
+    link: "/pet-care",
+    icon: "mdi-doctor",
+    text: "Cuidados"
+  },
+  {
+    link: "/organizations",
+    icon: "mdi-email",
+    text: "Organizaciones"
+  },
+  {
+    link: "/help",
+    icon: "mdi-message-video",
+    text: "Ayudas"
+  },
+  {
+    icon: "mdi-book-open-page-variant",
+    text: i18n.t("menu.terms_conditions"),
+    link: "/terms-conditions"
+  }
 ];
