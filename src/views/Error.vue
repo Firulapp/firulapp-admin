@@ -2,8 +2,8 @@
   <div class="d-flex align-center justify-center fill-height">
     <div class="text-center">
       <img
-        src="../assets/logo.svg"
-        alt="Vuetify Admin"
+        src="../assets/firulapp-logo.svg"
+        alt="Firulapp Admin"
         width="300"
         height="300"
       />
