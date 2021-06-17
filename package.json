@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint",
     "crud:make": "vue-cli-service crud:make",
     "crud:yaml": "vue-cli-service crud:yaml",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "axios": "^0.20.0",
