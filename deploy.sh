@@ -17,7 +17,7 @@ git add -A
 git commit -m 'Deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
-git push -f git@github.com:jazvillagra/firulapp-admin.git main:gh-pages
+git push -f git@github.com:jazvillagra/firulapp-admin.git master:gh-pages
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
