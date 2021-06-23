@@ -191,7 +191,7 @@ export default {
       this.object.status = true;
       this.object.description = this.html;
       axios
-        .post("http://localhost:9000/api/param/rules", this.object, {
+        .post("https://firulapp.sodep.com.py/api/param/rules", this.object, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -210,7 +210,7 @@ export default {
     let loggedUser = localStorage.getItem("loggedUser");
     this.user = JSON.parse(loggedUser);
     axios
-      .get("http://localhost:9000/api/param/rules/1")
+      .get("https://firulapp.sodep.com.py/api/param/rules/1")
       .then(response => {
         this.object = response.data.dto;
         this.editor = new Editor({

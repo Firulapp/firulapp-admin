@@ -56,7 +56,7 @@ export default {
         this.item.modifiedBy = this.user["userId"];
       }
       axios
-        .post("http://localhost:9000/api/param/species", this.item, {
+        .post("https://firulapp.sodep.com.py/api/param/species", this.item, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {

@@ -72,7 +72,7 @@ export default {
     getBreeds() {
       axios
         .get(
-          `http://localhost:9000/api/param/breed/species/${this.item.speciesId}`
+          `https://firulapp.sodep.com.py/api/param/breed/species/${this.item.speciesId}`
         )
         .then(response => {
           this.breeds = response.data.list;
@@ -86,7 +86,7 @@ export default {
         this.petcare.modifiedBy = this.user["userId"];
       }
       axios
-        .post("http://localhost:9000/api/param/petcare", this.petcare, {
+        .post("https://firulapp.sodep.com.py/api/param/petcare", this.petcare, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -103,7 +103,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:9000/api/param/species").then(response => {
+    axios.get("https://firulapp.sodep.com.py/api/param/species").then(response => {
       this.species = response.data.list;
     });
     let loggedUser = localStorage.getItem("loggedUser");

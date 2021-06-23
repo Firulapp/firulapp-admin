@@ -101,7 +101,7 @@ export default {
     },
     remove(item) {
       axios
-        .delete("http://localhost:9000/api/param/breed", item, {
+        .delete("https://firulapp.sodep.com.py/api/param/breed", item, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -117,7 +117,7 @@ export default {
     },
     obtenerRazas() {
       axios
-        .get(`http://localhost:9000/api/param/breed/species/${this.speciesId}`)
+        .get(`https://firulapp.sodep.com.py/api/param/breed/species/${this.speciesId}`)
         .then(response => {
           this.items = response.data.list;
         });
@@ -125,7 +125,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:9000/api/param/species").then(response => {
+    axios.get("https://firulapp.sodep.com.py/api/param/species").then(response => {
       this.species = response.data.list;
     });
   }

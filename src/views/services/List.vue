@@ -85,7 +85,7 @@ export default {
     },
     remove(item) {
       axios
-        .delete("http://localhost:9000/api/param/service/type", item, {
+        .delete("https://firulapp.sodep.com.py/api/param/service/type", item, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -101,7 +101,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:9000/api/param/service/type").then(response => {
+    axios.get("https://firulapp.sodep.com.py/api/param/service/type").then(response => {
       this.items = response.data.list;
     });
     this.loadingTable = false;

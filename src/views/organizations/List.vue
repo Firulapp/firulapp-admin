@@ -81,7 +81,7 @@ export default {
     },
     remove(item) {
       axios
-        .delete("http://localhost:9000/api/param/species", item, {
+        .delete("https://firulapp.sodep.com.py/api/param/species", item, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
         .then(response => {
@@ -97,7 +97,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:9000/api/param/species").then(response => {
+    axios.get("https://firulapp.sodep.com.py/api/param/species").then(response => {
       this.items = response.data.list;
     });
     this.loadingTable = false;
