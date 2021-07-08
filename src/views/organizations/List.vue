@@ -59,13 +59,11 @@ export default {
   },
   methods: {
     approve(item) {
-      let loggedUser = localStorage.getItem("loggedUser");
       axios
-        .delete(
-          "https://firulapp.sodep.com.py/api/param/organization/approve/" +
+        .post(
+          "https://firulapp.sodep.com.py/api/param/organization/request/approve/" +
             item.id +
-            "/modifiedBy/" +
-            loggedUser["id"],
+            "/modifiedBy/6",
           {
             headers: { "X-Requested-With": "XMLHttpRequest" }
           }
@@ -79,13 +77,11 @@ export default {
         });
     },
     reject(item) {
-      let loggedUser = localStorage.getItem("loggedUser");
       axios
-        .delete(
-          "https://firulapp.sodep.com.py/api/param/organization/reject/" +
+        .post(
+          "https://firulapp.sodep.com.py/api/param/organization/request/reject/" +
             item.id +
-            "/modifiedBy/" +
-            loggedUser["id"],
+            "/modifiedBy/6",
           {
             headers: { "X-Requested-With": "XMLHttpRequest" }
           }
