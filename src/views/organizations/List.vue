@@ -63,12 +63,13 @@ export default {
         .post(
           "https://firulapp.sodep.com.py/api/param/organization/request/approve/" +
             item.id +
-            "/modifiedBy/6",
+            "/modifiedBy/1",
           {
             headers: { "X-Requested-With": "XMLHttpRequest" }
           }
         )
         .then(response => {
+          alert("Solicitud de organización aprobada");
           console.log(response);
         })
         .catch(errorResponse => {
@@ -80,12 +81,13 @@ export default {
         .post(
           "https://firulapp.sodep.com.py/api/param/organization/request/reject/" +
             item.id +
-            "/modifiedBy/6",
+            "/modifiedBy/1",
           {
             headers: { "X-Requested-With": "XMLHttpRequest" }
           }
         )
         .then(response => {
+          alert("Solicitud de organización rechazada");
           console.log(response);
         })
         .catch(errorResponse => {
