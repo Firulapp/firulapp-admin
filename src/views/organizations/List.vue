@@ -69,6 +69,7 @@ export default {
           }
         )
         .then(response => {
+          alert("Solicitud de organización aprobada");
           console.log(response);
         })
         .catch(errorResponse => {
@@ -86,6 +87,7 @@ export default {
           }
         )
         .then(response => {
+          alert("Solicitud de organización rechazada");
           console.log(response);
         })
         .catch(errorResponse => {
