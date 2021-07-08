@@ -103,9 +103,11 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://firulapp.sodep.com.py/api/param/petcare").then(response => {
-      this.items = response.data.list;
-    });
+    axios
+      .get("https://firulapp.sodep.com.py/api/param/petcare")
+      .then(response => {
+        this.items = response.data.list;
+      });
     this.loadingTable = false;
   }
 };

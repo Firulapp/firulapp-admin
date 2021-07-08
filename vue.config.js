@@ -10,8 +10,6 @@ module.exports = {
       enableInSFC: "false"
     }
   },
-  publicPath: process.env.NODE_ENV === 'production'
-  ? '/firulapp-admin'
-  : '/',
+  publicPath: process.env.NODE_ENV === "production" ? "/firulapp-admin" : "/",
   transpileDependencies: ["vuetify"]
 };

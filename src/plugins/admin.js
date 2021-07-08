@@ -21,7 +21,8 @@ Vue.use(VuetifyAdmin);
 /**
  * Axios instance
  */
-const baseURL = process.env.VUE_APP_API_URL || "https://firulapp.sodep.com.py/api";
+const baseURL =
+  process.env.VUE_APP_API_URL || "https://firulapp.sodep.com.py/api";
 
 const http = axios.create({
   baseURL,

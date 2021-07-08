@@ -103,9 +103,11 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://firulapp.sodep.com.py/api/param/species").then(response => {
-      this.species = response.data.list;
-    });
+    axios
+      .get("https://firulapp.sodep.com.py/api/param/species")
+      .then(response => {
+        this.species = response.data.list;
+      });
     let loggedUser = localStorage.getItem("loggedUser");
     this.user = JSON.parse(loggedUser);
   }

@@ -19,71 +19,55 @@
             hide-details
           ></v-text-field>
           <v-spacer></v-spacer>
-          <div class="text-right pt-2">
-            <v-btn icon @click="create()">
-              <v-icon>mdi-plus</v-icon>
-            </v-btn>
-          </div>
         </v-toolbar>
       </template>
       <template v-slot:[`item.actions`]="{ item }">
         <tr>
           <td>
-            <v-btn icon @click="edit(item)">
-              <v-icon>mdi-lead-pencil</v-icon>
+            <v-btn icon @click="approve(item)">
+              <v-icon>mdi-checkbox-marked-circle-outline</v-icon>
             </v-btn>
-            <v-btn icon @click="remove(item)">
-              <v-icon>mdi-delete</v-icon>
+            <v-btn icon @click="reject(item)">
+              <v-icon>mdi-cancel</v-icon>
             </v-btn>
           </td>
         </tr>
       </template>
     </v-data-table>
-    <speciesForm
-      :showDialog="showDialog"
-      :item="species"
-      @setShowDialog="setShowDialog"
-    ></speciesForm>
   </div>
 </template>
 
 <script>
 const axios = require("axios");
-import speciesForm from "@/views/species/Form";
 export default {
-  components: {
-    speciesForm
-  },
   data() {
     return {
       headers: [
         { text: "Id", value: "id" },
-        { text: "Nombre", value: "name", sortable: false },
-        { text: "Descripción", value: "description", sortable: false },
+        { text: "Nombre", value: "organizationName", sortable: false },
+        { text: "RUC", value: "ruc", sortable: false },
+        { text: "Email", value: "email", sortable: false },
         { text: "Estado", value: "status", sortable: false },
+        { text: "Fecha de Pedido", value: "createdAt", sortable: false },
         { text: "Acciones", value: "actions", sortable: false }
       ],
       items: [],
-      species: {},
+      organization: {},
       loadingTable: true,
       search: "",
-      showDialog: false
     };
   },
   methods: {
-    create() {
-      this.species = {};
-      this.setShowDialog();
-    },
-    edit(item) {
-      this.species = item;
-      this.setShowDialog();
-    },
-    remove(item) {
+    approve(item) {
       axios
-        .delete("https://firulapp.sodep.com.py/api/param/species", item, {
-          headers: { "X-Requested-With": "XMLHttpRequest" }
-        })
+        .post(
+          "https://firulapp.sodep.com.py/api/param/organization/request/approve/" +
+            item.id +
+            "/modifiedBy/6",
+          {
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+          }
+        )
         .then(response => {
           console.log(response);
           window.location.reload();
@@ -92,14 +76,31 @@ export default {
           alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
         });
     },
-    setShowDialog() {
-      this.showDialog = !this.showDialog;
-    }
+    reject(item) {
+      axios
+        .post(
+          "https://firulapp.sodep.com.py/api/param/organization/request/reject/" +
+            item.id +
+            "/modifiedBy/6",
+          {
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+          }
+        )
+        .then(response => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch(errorResponse => {
+          alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
+        });
+    },
   },
   mounted() {
-    axios.get("https://firulapp.sodep.com.py/api/param/species").then(response => {
-      this.items = response.data.list;
-    });
+    axios
+      .get("https://firulapp.sodep.com.py/api/param/organization/request")
+      .then(response => {
+        this.items = response.data.list;
+      });
     this.loadingTable = false;
   }
 };
