@@ -48,7 +48,8 @@ export default {
         { text: "RUC", value: "ruc", sortable: false },
         { text: "Email", value: "email", sortable: false },
         { text: "Estado", value: "status", sortable: false },
-        { text: "Fecha de Pedido", value: "createdAt", sortable: false }
+        { text: "Fecha de Pedido", value: "createdAt", sortable: false },
+        { text: "Acciones", value: "actions", sortable: false }
       ],
       items: [],
       organization: {},
