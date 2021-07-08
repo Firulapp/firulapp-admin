@@ -91,7 +91,6 @@ export default {
         })
         .then(response => {
           this.petcare = response.data.dto;
-          window.location.reload();
         })
         .catch(errorResponse => {
           alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
