@@ -54,7 +54,7 @@ export default {
       items: [],
       organization: {},
       loadingTable: true,
-      search: "",
+      search: ""
     };
   },
   methods: {
@@ -70,7 +70,6 @@ export default {
         )
         .then(response => {
           console.log(response);
-          window.location.reload();
         })
         .catch(errorResponse => {
           alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
@@ -88,12 +87,11 @@ export default {
         )
         .then(response => {
           console.log(response);
-          window.location.reload();
         })
         .catch(errorResponse => {
           alert(`ERROR ${errorResponse.errorCode} - ${errorResponse.message}`);
         });
-    },
+    }
   },
   mounted() {
     axios
