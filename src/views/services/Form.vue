@@ -56,9 +56,13 @@ export default {
         this.item.modifiedBy = this.user["userId"];
       }
       axios
-        .post("https://firulapp.sodep.com.py/api/param/service/type", this.item, {
-          headers: { "X-Requested-With": "XMLHttpRequest" }
-        })
+        .post(
+          "https://firulapp.sodep.com.py/api/param/service/type",
+          this.item,
+          {
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+          }
+        )
         .then(response => {
           this.item = response.data.dto;
           window.location.reload();

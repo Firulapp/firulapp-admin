@@ -117,7 +117,9 @@ export default {
     },
     obtenerRazas() {
       axios
-        .get(`https://firulapp.sodep.com.py/api/param/breed/species/${this.speciesId}`)
+        .get(
+          `https://firulapp.sodep.com.py/api/param/breed/species/${this.speciesId}`
+        )
         .then(response => {
           this.items = response.data.list;
         });
@@ -125,9 +127,11 @@ export default {
     }
   },
   mounted() {
-    axios.get("https://firulapp.sodep.com.py/api/param/species").then(response => {
-      this.species = response.data.list;
-    });
+    axios
+      .get("https://firulapp.sodep.com.py/api/param/species")
+      .then(response => {
+        this.species = response.data.list;
+      });
   }
 };
 </script>
